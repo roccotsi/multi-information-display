@@ -7,4 +7,4 @@ Used hardware:
 
 Before compiling, configure:
 * In settings.h: WLAN and weather api key
-* IN main.cpp: COUNT_LOTTO_TIPPS, LOTTO_TIPPS, SPIEL_77, SUPERZAHL with your lotto numbers
+* In main.cpp: COUNT_LOTTO_TIPPS, LOTTO_TIPPS, SPIEL_77, SUPERZAHL with your lotto numbers
