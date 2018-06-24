@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
-#include <NTPtimeESP.h>
 #include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
@@ -38,7 +37,6 @@ const int SUPERZAHL = 7;
 
 // variables
 LiquidCrystal_I2C lcd(0x27, 20, 4);
-NTPtime NTP("de.pool.ntp.org");
 String cities[] = {WEATHER_CITY};
 Lotto lotto = Lotto();
 unsigned int cityCount = 1;
@@ -403,18 +401,6 @@ void updateForecastWeatherText(byte cityIndex) {
     foundIndex = payload.indexOf("dt", endIndex); // search next time
     index++;
   }
-}
-
-strDateTime getCurrentDateTime() {
-  // get actual date and time
-  strDateTime dateTime;
-  bool validDateTime = false;
-  while (!validDateTime) {
-    // first parameter: Time zone in floating point (for India); second parameter: 1 for European summer time; 2 for US daylight saving time; 0 for no DST adjustment; (contributed by viewwer, not tested by me)
-    strDateTime dateTime = NTP.getNTPtime(1.0, 1);
-    validDateTime = dateTime.valid;
-  }
-  return dateTime;
 }
 
 void getWeatherData() {
