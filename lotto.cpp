@@ -82,8 +82,18 @@ LottoData Lotto::getLastSaturdayLotto()
   lottoData.success = false; // initialize with not success
   String response = _callUrlAndGetResponse(URL_LOTTO_SATURDAY);
 
+  int startIndex = response.indexOf("Woche /");
+  if (startIndex > -1) {
+    int endIndex = response.indexOf("</p>", startIndex);
+    if (endIndex > -1) {
+      String date = response.substring(startIndex + 7, endIndex);
+      date.trim();
+      lottoData.date = date;
+    }
+  }
+
   // 6 aus 49
-  int startIndex = response.indexOf("6 aus 49");
+  startIndex = response.indexOf("6 aus 49");
   LottoNumberResult result = getNextNumber(response, startIndex);
   if (result.endIndex == -1) {
     return lottoData;
@@ -135,18 +145,6 @@ LottoData Lotto::getLastSaturdayLotto()
   if (lottoData.spiel77 != "") {
     lottoData.success = true; // everything was extracted
   }
-
-
-  // // dummy
-  // lottoData.date="16.06.2018";
-  // lottoData.z1="1";
-  // lottoData.z2="2";
-  // lottoData.z3="3";
-  // lottoData.z4="4";
-  // lottoData.z5="5";
-  // lottoData.z6="6";
-  // lottoData.super="7";
-  // lottoData.spiel77="7777777";
 
   return lottoData;
 }
