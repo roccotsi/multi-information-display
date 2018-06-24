@@ -10,7 +10,7 @@
 
 // weather settings (for OPEN_WEATHER_MAP_APP_ID you need to subcribe to openweathermap.org)
 #define OPEN_WEATHER_MAP_APP_ID        "???"
-#define WEATHER_CITY                   "Herten"
+#define WEATHER_CITY                   "???"
 #define WEATHER_UPDATE_INTERVAL_MILLIS 600000; // aprox. every 10 minutes
 
 // display settings
