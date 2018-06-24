@@ -1,8 +1,8 @@
 # multi-information-display
-Displays multi informations (example: weather and lotto) with an ESP8266
+Displays multi informations (weather and lotto) with an ESP8266
 
 Used hardware:
-* Nodemcu
+* Nodemcu (ESP8266 board)
 * 20x4 display (connected via I2C)
 
 Used libraries:
