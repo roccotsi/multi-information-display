@@ -124,7 +124,7 @@ void compareLottoZahlen() {
     }
 
     if (countRichtige > 2 || (countRichtige > 1 && SUPERZAHL == superZahl)) {
-      if (lineNo > 4) {
+      if (lineNo > 3) {
         lineNo = 0;
         displayLastPageNo = displayLastPageNo + 1;
       }
