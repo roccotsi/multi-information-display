@@ -1,5 +1,5 @@
 # multi-information-display
-Displays multi informations (weather and lotto) with an ESP8266
+Displays multi informations (weather and lotto) with an ESP8266 (NodeMCU)
 
 Used hardware:
 * Nodemcu (ESP8266 board)
@@ -15,3 +15,9 @@ Used libraries:
 Before compiling, configure:
 * In settings.h: WLAN and weather api key
 * In main.cpp: COUNT_LOTTO_TIPPS, LOTTO_TIPPS, SPIEL_77, SUPERZAHL with your lotto numbers
+
+Connection of display on NodeMCU (via I2C):
+* GND: Pin G
+* VCC: Pin VU
+* SDA: Pin D2
+* SCL: Pin D1
