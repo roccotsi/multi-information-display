@@ -37,7 +37,7 @@ String Lotto::_callUrlAndGetResponse(String url) {
   return "";
 }
 
-LottoNumberResult getNextNumber(String response, int startIndex) {
+LottoNumberResult getNextNumber(String &response, int startIndex) {
   LottoNumberResult result;
   result.endIndex = -1; // initialize with -1 as no number was found
 
@@ -58,7 +58,7 @@ LottoNumberResult getNextNumber(String response, int startIndex) {
   return result;
 }
 
-String getSpiel77(String response, int startIndex) {
+String getSpiel77(String &response, int startIndex) {
   String result = "";
   startIndex = response.indexOf("Spiel 77:", startIndex);
   if (startIndex == -1) {
