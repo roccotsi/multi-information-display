@@ -168,6 +168,9 @@ void getLottoZahlen() {
 
   LottoData lottoData = lotto.getLastSaturdayLotto();
   if (!lottoData.success) {
+    printLineCut(0, "Lottodaten konnten");
+    printLineCut(1, "nicht geladen werden");
+    delay(updateDisplayIntervalMillis);
     return;
   }
 
@@ -187,66 +190,6 @@ void getLottoZahlen() {
   displayLine4Array[displayLastPageNo] = "Spiel77: " + lottoData.spiel77;
   compareLottoZahlen();
 }
-
-// void getLottoZahlen() {
-//   if (lotto6Aus49[0] != 0) {
-//     return; // load lotto data only once
-//   }
-//
-//   lcd.clear();
-//   Serial.println("Get lotto data...");
-//   printLineCut(0, "Lade Lottodaten...");
-//
-//   String payload = callUrlAndGetResponse(LOTTO_URL);
-//   int startIndexJson = payload.indexOf("{");
-//   if (startIndexJson == -1) {
-//     return;
-//   }
-//   int endIndexJson = payload.indexOf("}", startIndexJson);
-//   if (endIndexJson == -1) {
-//     return;
-//   }
-//   // String json = "{\"Lotto\":" + payload.substring(startIndexJson, endIndexJson + 1) + "}";
-//   String json = payload.substring(startIndexJson, endIndexJson + 1);
-//   Serial.println(json);
-//   delay (1000);
-//
-//   StaticJsonBuffer<1000> jsonBuffer;
-//   JsonObject &root = jsonBuffer.parseObject(json);
-//   if (!root.success()) {
-//     Serial.println(F("Failed to read JSON"));
-//     lcd.clear();
-//     printLineCut(0, "Fehler Lottodaten");
-//     delay(2000);
-//     return;
-//   }
-//   Serial.println("JSON parsed");
-//   String datum = root["Datum"];
-//   datum.replace("\"", "");
-//   String z1 = root["Z1"];
-//   String z2 = root["Z2"];
-//   String z3 = root["Z3"];
-//   String z4 = root["Z4"];
-//   String z5 = root["Z5"];
-//   String z6 = root["Z6"];
-//   String super = root["Superzahl"];
-//   String spiel77Text = root["Spiel77"];
-//   spiel77 = spiel77Text;
-//   lotto6Aus49[0] = z1.toInt();
-//   lotto6Aus49[1] = z2.toInt();
-//   lotto6Aus49[2] = z3.toInt();
-//   lotto6Aus49[3] = z4.toInt();
-//   lotto6Aus49[4] = z5.toInt();
-//   lotto6Aus49[5] = z6.toInt();
-//   superZahl = super.toInt();
-//
-//   displayLastPageNo =  displayLastPageNo + 1;
-//   displayLine1Array[displayLastPageNo] = "Lotto " + datum;
-//   displayLine2Array[displayLastPageNo] = z1 + " " + z2 + " " + z3 + " " + z4 + " " + z5 + " " + z6;
-//   displayLine3Array[displayLastPageNo] = "Superzahl: " + super;
-//   displayLine4Array[displayLastPageNo] = "Spiel77: " + spiel77;
-//   compareLottoZahlen();
-// }
 
 // shorten the weather description
 String shortenWeatherDescription(String text) {
@@ -426,7 +369,7 @@ void updateWeatherData() {
 void updateDisplay() {
   // if (displayTextChanged) {
     // Serial.println("Writing to LCD...");
-    for (int page = 0; page <= displayLastPageNo; page++) {
+    for (unsigned int page = 0; page <= displayLastPageNo; page++) {
       lcd.clear();
       printLineCut(0, displayLine1Array[page]);
       printLineCut(1, displayLine2Array[page]);
