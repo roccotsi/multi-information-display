@@ -15,7 +15,6 @@ byte Ouml[8] =  { B01010, B00000, B01110, B10001, B10001, B10001, B10001, B01110
 
 const char* WEATHER_URL_TEMPLATE = "http://api.openweathermap.org/data/2.5/weather?units=metric&lang=de&q=%1,de&appid=%2";
 const char* FORECAST_URL_TEMPLATE = "http://api.openweathermap.org/data/2.5/forecast?units=metric&lang=de&q=%1,de&appid=%2&cnt=10";
-const char* LOTTO_URL = "http://api.hubobel.de/lotto/Samstag";
 const unsigned int DISPLAY_MAX_PAGE_SIZE = 10;
 const int COUNT_LOTTO_TIPPS = 12;
 const int LOTTO_TIPPS[COUNT_LOTTO_TIPPS][6] = {

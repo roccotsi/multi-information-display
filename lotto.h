@@ -27,6 +27,8 @@ class Lotto
     LottoData getLastSaturdayLotto();
   private:
     String _callUrlAndGetResponse(String url);
+    LottoData getLastSaturdayLottoArd();
+    LottoData getLastSaturdayLottoSachsenLotto();
 };
 
 #endif
